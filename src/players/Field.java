@@ -50,5 +50,19 @@ public class Field {
         }
     }
 
+        public static void printCurrentDownAndDistance(){
+
+        if(currentDown == 1){
+            System.out.format("%n1st and %s%n", firstDownYardsToGo);
+        } else if(currentDown == 2){
+            System.out.format("%n2nd and %s%n", firstDownYardsToGo);
+        } else if (currentDown == 3) {
+            System.out.printf("%n3rd and %s%n", firstDownYardsToGo);
+        } else if(currentDown == 4){
+            System.out.printf("%n4th and %s%n", firstDownYardsToGo);
+        }
+
+    }
+
 
 }

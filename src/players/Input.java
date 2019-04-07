@@ -13,20 +13,20 @@ public class Input {
     static Scanner playScan = new Scanner(System.in);
 
 
-    protected static String getPassOrRun() {
+    public static String getPassOrRun() {
          String playChoice =  playScan.next();
          return playChoice;
     }
 
 
-    protected static int choosePassOrRun() {
+    public static int choosePassOrRun(Player qb) {
         String playChoice =  playScan.next();
 
         int passOrRun = 0;
 
         if (playChoice.equalsIgnoreCase("pass") || (playChoice.equalsIgnoreCase("p") && playChoice.endsWith("s"))) {
-            System.out.println("You chose Pass.. and you're writing this line of code to remind yourself that choosePassOrRun works.");
             passOrRun = 2;
+//            System.out.printf("\n%s has a completion percentage of : %s", qb.getName(), qb.getCompletionPercentage());
         } else if (playChoice.equalsIgnoreCase("run") || playChoice.equalsIgnoreCase("r")) {
             // if run, call the randomizerunmethod
             passOrRun = 1;

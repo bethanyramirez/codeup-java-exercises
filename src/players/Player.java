@@ -2,14 +2,13 @@ package players;
 
 public class Player {
 
-    public String name;
-    public int number;
-    public String team;
-    public String position;
-    public double completionPercentage = 0.0;
-//    int xLocation;
-//    int yLocation;
+    private String name;
+    private int number;
+    private String team;
+    private String position;
+    private double completionPercentage;
 
+    public Player (){}
 
     public Player(String name, int number, String team){
         this.name = name;
@@ -47,11 +46,33 @@ public class Player {
         return number;
     }
 
-//    public double getCompletionPercentage() {
-//        return completionPercentage;
+    public double getCompletionPercentage() {
+        return completionPercentage;
+    }
+
+    public void setCompletionPercentage(double completionPercentage) {
+        this.completionPercentage = completionPercentage;
+    }
+
+
+
+//    public Player returnTeamQb(Team teamname){
+//
+//                Player playerToReturn = new Quarterback();
+//
+//        for(Player player : PlayersArray.findAll()){
+//            if(player.getPosition().equals("QB") && teamname.getName().equals(teamname)){
+//                System.out.println("your qb is :" + playerToReturn.getName());
+//                return player;
+//                // call the pass method here... or the run method... or try anything. You are desperate at this point.
+//            }
+//
+//        }
+////        return playerToReturn;
+//
 //    }
 
-    //    abstract void randomize();
+//    abstract void randomize();
 
 //    abstract void randomize(double num); // overloading to add passer rating later...
 // user Lists and arrayLists.

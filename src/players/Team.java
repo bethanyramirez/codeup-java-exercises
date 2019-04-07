@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Team {
 
     protected String location;
@@ -38,24 +39,40 @@ public class Team {
         return players;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTeam(String teamname){
+
+        for(Team team : TeamsArray.findAllTeams()){
+            if(teamname.equals(team.getName())){
+                buildTeam(teamname);
+            }
+        }
+    }
+
     public void buildTeam(String teamname) {
 
-        Player[] playersFromArray = PlayersArray.findAll();
-        for(Player player : playersFromArray){
-            if(player.team.equals(teamname)){ // the team it is getting is null
+        for(Player player : PlayersArray.findAll()){
+            if(player.getTeam().equals(teamname)){
                 players.add(player);
             }
         }
     }
 
+    public Player getQB() {
+        return players.get(0);
+    }
+
     public void returnTeamPlayers(Team teamname){
 
-        System.out.println("Here is your starting lineup: ");
-
+        System.out.println("Here is your starting lineup:");
+        System.out.println("\n______________________________________");
         for(Player player: teamname.players){
-
-            System.out.format("\n# %-3s| %-18s| %-3s", player.getNumber(), player.getName(), player.getPosition());
+            System.out.format("%n# %-3s| %-18s| %-3s", player.getNumber(), player.getName(), player.getPosition());
         }
+        System.out.println("\n______________________________________");
     }
 
 
@@ -65,19 +82,38 @@ public class Team {
     }
 
 //
-public Player returnTeamQb(Team teamname){
-    Player[] playersFromArray = PlayersArray.findAll();
-    Player playerToReturn = new Quarterback("Brody", 5, "SA Brodies", "QB", 50.00);
+//public Player returnTeamQb(Team teamname){
+//
+//    Player playerToReturn;
+//
+//    for(Player player : PlayersArray.findAll()){
+//        if(player.getPosition().equals("QB") && player.getTeam().equals(teamname.getName())){
+//            playerToReturn = player
+//
+//            ;
+//            System.out.println("your qb is :" + playerToReturn.getName());
+//            // call the pass method here... or the run method... or try anything. You are desperate at this point.
+//        }
+//
+//
+//
+//    }
+//    return playerToReturn;
+//}
 
-    for(Player player : playersFromArray){
-        if(player.position.equals("QB") && player.team.equals(teamname.name)){
-            playerToReturn = player;
-            // call the pass method here... or the run method... or try anything. You are desperate at this point.
-        }
 
-    }
-    return playerToReturn;
-}
+//    public void returnTeamQb(Team teamname){
+//
+//
+//// if the team has a player with a position of QB, then return the QB
+////
+//
+//        if(teamname.getPlayers().contains()){
+//            System.out.println("contains a qb class");
+//        }
+//
+//    }
+
 
 
 
@@ -90,4 +126,5 @@ public Player returnTeamQb(Team teamname){
     // create a method (maybe?) that takes in a String teamname and instantiates a new Team class with the players that match that team name...So maybe Player.getTeam.equals(teamName parameter); Also, need a getter method on the Player class.
 
 }
+
 
