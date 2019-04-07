@@ -1,6 +1,6 @@
 package shapes;
 
-abstract public class Quadrilateral extends Shape implements Measurable {
+abstract public class Quadrilateral extends Shape  { // this was supposed to implement Measurable, but you moved it to your java class assessment
 
     protected int length;
     protected int width;

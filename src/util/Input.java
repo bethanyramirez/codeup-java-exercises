@@ -1,4 +1,5 @@
 package util;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
@@ -10,27 +11,52 @@ public class Input {
     }
 
     public int getInt(){
-        return myScanner.nextInt();
+
+        Integer num;
+        String input = myScanner.nextLine();
+        try {
+            num = Integer.valueOf(input);
+        } catch (NumberFormatException e){
+            num = getInt();
+        }
+        return num;
+
     }
 
     public int getInt(int min, int max) {
 
-        int output;
+        Integer userInt;
+        String input = myScanner.nextLine();
 
-        do {
-            System.out.println("Enter a number...WITHIN THE RANGE");
+        try {
+            userInt = Integer.valueOf(input);
+        } catch (NumberFormatException nfe){
+            return getInt(min,max); // only called when it's NOT a number.
+        }
 
-            output = myScanner.nextInt();
+        if(userInt >= min && userInt <= max){
+            return userInt;
+        }
 
-        } while(output <= min || output >= max);
+        return getInt(min,max); // the number is  OUTSIDE the min/max but it IS an integer
 
-        return output;
+
     }
 
 
 
+
+
     public double getDouble(){
-        return myScanner.nextDouble();
+
+        Double num;
+        String input = myScanner.nextLine();
+        try{
+            num = Double.valueOf(input);
+        } catch (NumberFormatException nfe) {
+            num = getDouble();
+        }
+        return num;
     }
 
     public String getString(){
@@ -47,16 +73,20 @@ public class Input {
 
     public double getDouble(double min, double max) {
 
-        double doubleoutput;
+        double userDouble;
+        String input = myScanner.nextLine();
+        try{
+            userDouble = Double.valueOf(input);
+        } catch (NumberFormatException nfe){
+            System.out.println(nfe);
+            return getDouble(min, max);
+        }
 
-        do {
-            System.out.println("Enter a number WITHIN THE RANGE");
+        if(userDouble >= min && userDouble <= max){
+            return userDouble;
+        }
+        return getDouble(min,max);
 
-            doubleoutput = myScanner.nextInt();
-
-        } while(doubleoutput < min || doubleoutput > max);
-
-        return doubleoutput;
     }
 
 
@@ -67,8 +97,12 @@ public class Input {
 
         Input myInput = new Input();
 
-        System.out.println(myInput.getInt(1,50));
-        System.out.println(myInput.getDouble(1,60));
+//        System.out.println(myInput.getInt(9.9));
+
+        System.out.println(myInput.getInt());
+
+
+        System.out.println(myInput.getDouble());
 
     }
 
