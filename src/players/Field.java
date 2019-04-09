@@ -27,13 +27,21 @@ public class Field {
         }
     }
 
+    public static int getFirstDownYardsToGo() {
+        return firstDownYardsToGo;
+    }
+
+    public static int getCurrentDown() {
+        return currentDown;
+    }
+
     public static void calculateYardsTilTouchdown(){
 
         touchdownYardsToGo -= yardsGainedFromPlay;
-        System.out.format("\nYou have %s yards remaining to get a TD", touchdownYardsToGo);
+//        System.out.format("\nYou have %s yards remaining to get a TD", touchdownYardsToGo);
     }
 
-    private static void calculateYardsTilFirstDown(int yardsGainedFromPlay){
+    public static void calculateYardsTilFirstDown(){
 
         firstDownYardsToGo -= yardsGainedFromPlay;
     }
@@ -41,7 +49,7 @@ public class Field {
 
     public static void analyzeDownAndDistance(){
          if (firstDownYardsToGo <= 0) {
-             System.out.println("\n1st down!!!!!!");
+             System.out.println("\n\n>>> 1st down!");
              resetDownAndDistance();
 //             driveBall();
         } else if(currentDown == 4) {

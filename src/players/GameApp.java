@@ -2,6 +2,7 @@ package players;
 
 import static players.Input.choosePassOrRun;
 import static players.Input.playScan;
+import static players.Randomize.randomizePassYardsGained;
 
 
 public class GameApp {
@@ -43,27 +44,47 @@ public class GameApp {
 //        patriots.buildTeam("Patriots");
 //        raiders.buildTeam("Raiders");
 
-//        System.out.println(myTeam.getPlayers());
         System.out.println();
         System.out.println();
         myTeam.returnTeamPlayers(myTeam);
         System.out.println();
         System.out.println();
 
-        // enter a coin toss..... //
 
-        System.out.println("You are starting at the 20 yard line, and need 80 yards for a Touchdown.  Would you like to pass or run?");
-
+        System.out.println("You are starting at the 20 yard line, and need 80 yards for a Touchdown.\nWould you like to pass or run?");
 
 
-//        Input.choosePassOrRun(myTeam.getQB());
 
-        if(Input.choosePassOrRun(myTeam.getQB()) == 2) {
-            Quarterback.passBallBasedOnQbStats(myTeam.getQB().getCompletionPercentage());
-        }
+        do {
+            Field.printCurrentDownAndDistance();
+            if (Input.choosePassOrRun() == 2) { // 2 denotes a pass
+                if (Quarterback.passBallBasedOnQbStats(myTeam.getQB().getCompletionPercentage()) == 1){
+                    System.out.printf("%s to %s for %s yards", myTeam.getQB().getName(), myTeam.getReceiver().getName(), randomizePassYardsGained());
+                }
+            }
+            Field.calculateYardsTilFirstDown();
+            Field.calculateYardsTilTouchdown();
+        } while(Field.getCurrentDown() < 4 && Field.getFirstDownYardsToGo() > 0);
 
-        Field.printCurrentDownAndDistance();
-//        System.out.println("\n\nPass or Run?");
+        Field.analyzeDownAndDistance();
+
+
+
+
+
+
+
+
+
+
+
+//        if(Input.choosePassOrRun(myTeam.getQB()) == 2) {
+//            Quarterback.passBallBasedOnQbStats(myTeam.getQB().getCompletionPercentage());
+//        }
+//
+//        System.out.printf("%s to Adams for %s yards", myTeam.getQB().getName(), randomizePassYardsGained());
+//        Field.printCurrentDownAndDistance();
+//        Field.calculateYardsTilTouchdown();
 
 
 //        passBallBasedOnQbStats(myTeam.getQB().getCompletionPercentage());

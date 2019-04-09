@@ -22,7 +22,7 @@ public class PlayersArray {
                 // Cowboys
                 new Quarterback("Dak Prescott", 4, "Cowboys", "QB", 75.00),
                 new Receiver("Randall Cobb", 18, "Cowboys"),
-                new Receiver("Tavon Austin", 10, "Cowboys"),
+                new Receiver("Amari Cooper", 19, "Cowboys"),
                 new RunningBack("Ezekiel Elliott", 21, "Cowboys"),
                 // Steelers
                 new Quarterback("Ben Roethlisberger", 7, "Steelers", "QB", 50.00),
@@ -35,7 +35,7 @@ public class PlayersArray {
                 new Receiver("Vyncint Smith", 17, "Texans"),
                 new RunningBack("Lamar Miller", 26, "Texans"),
                 // Patriots
-                new Quarterback("Tom Brady", 12, "Patriots", "QB", 25.00),
+                new Quarterback("Tom Brady", 12, "Patriots", "QB", 10.00),
                 new Receiver("Julian Edelman", 11, "Patriots"),
                 new Receiver("Phillip Dorsett", 13, "Patriots"),
                 new RunningBack("Sony Michel", 26, "Patriots"),

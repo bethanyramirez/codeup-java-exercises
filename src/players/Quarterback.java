@@ -4,11 +4,7 @@ import java.util.Random;
 
 public class Quarterback extends Player  {
 
-//    public String name;
-//    public int number;
-//    public String team;
     public String position = "QB";
-//    public double completionPercentage = 0.0;
     public Quarterback(){}
 
     public Quarterback(String name, int number, String team, String position, double completionPercentage) {
@@ -44,27 +40,25 @@ public class Quarterback extends Player  {
         return super.getPosition();
     }
 
-//    public double extractPassCompletion(){
-//    }
 
-    //    @Override
-    public static void passBallBasedOnQbStats(double completionPercentage) {
+    public static int passBallBasedOnQbStats(double completionPercentage) {
         Random random = new Random();
-        int successRandomizer = random.nextInt(101) + 1; // random num between 1 - 100
-
-//        System.out.format("%nHere is the random number: %s", successRandomizer);
+        int successRandomizer = random.nextInt(101) + 1;
+        int incompletePassNum;
 
         Field.setCurrentDown();
 
-       if(successRandomizer <= completionPercentage) { // success of completion will depend on QB completion Percentage
-
-//           System.out.println("\nComplete Pass");
-
-           Randomize.callPlayRandomizer(2); // 2 is the parameter for "pass" to randomize the yardage gained.
+       if(successRandomizer <= completionPercentage) {
+           // return a 1 if it is successful
+           incompletePassNum = 1;
+           Randomize.randomizePassYardsGained();
        }  else {
+           // return a 0 if it is unsuccessful
+           incompletePassNum = 0;
            Field.yardsGainedFromPlay = 0;
            System.out.println("\nIncomplete Pass");
        }
+       return incompletePassNum;
     }
 
 

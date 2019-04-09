@@ -46,7 +46,7 @@ public class Randomize {
         }
     }
 
-    protected static void randomizePassYardsGained(){
+    protected static int randomizePassYardsGained(){
         Random r1 = new Random();
 
         int playRandomizer = r1.nextInt(11); // setting calculations of 100%..
@@ -54,16 +54,18 @@ public class Randomize {
         int mediumPass = r1.nextInt(11) + 10; // generating num from 10 - 20
         int longPass = r1.nextInt(21) + 20; // generating num from 20 - 40
 
-
         if (playRandomizer <= 7) { // 60% of the time it will be a short pass
-            Field.yardsGainedFromPlay = shortPass;
-            System.out.format("short pass - completed for %s yards", shortPass);
+            return Field.yardsGainedFromPlay = shortPass;
+//            return shortPass;
+//            System.out.format("short pass - completed for %s yards", shortPass);
         } else if (playRandomizer <= 9) { // 20% of the time it will be a medium pass
-            Field.yardsGainedFromPlay = mediumPass;
-            System.out.format("medium pass - completed for %s yards", mediumPass);
-        } else if (playRandomizer == 10) { // 10% of the time it will be a long pass
-            Field.yardsGainedFromPlay = longPass;
-            System.out.format("long pass - completed for %s yards", longPass);
+            return Field.yardsGainedFromPlay = mediumPass;
+//            return mediumPass;
+//            System.out.format("medium pass - completed for %s yards", mediumPass);
+        } else { // 10% of the time it will be a long pass
+            return Field.yardsGainedFromPlay = longPass;
+//            return longPass;
+//            System.out.format("long pass - completed for %s yards", longPass);
         }
     }
 

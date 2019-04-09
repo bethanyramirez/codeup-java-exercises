@@ -3,6 +3,7 @@ package players;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class Team {
@@ -63,6 +64,12 @@ public class Team {
 
     public Player getQB() {
         return players.get(0);
+    }
+
+    public Player getReceiver() {
+        Random random = new Random();
+        int randomReceiver = random.nextInt(2); // generating either 0 or 1
+        return (randomReceiver == 0) ? players.get(1) : players.get(2);
     }
 
     public void returnTeamPlayers(Team teamname){

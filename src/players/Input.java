@@ -19,7 +19,7 @@ public class Input {
     }
 
 
-    public static int choosePassOrRun(Player qb) {
+    public static int choosePassOrRun() {
         String playChoice =  playScan.next();
 
         int passOrRun = 0;
